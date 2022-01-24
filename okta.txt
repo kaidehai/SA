@@ -1,0 +1,121 @@
+https://dev-71031260.okta.com/oauth2/default
+
+Authorization Endpoint
+https://dev-71031260.okta.com/oauth2/default/v1/authorize
+
+Token Endpoint
+https://dev-71031260.okta.com/oauth2/default/v1/token
+
+Authorization Token Request
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+  response_type=code&
+  scope=photos&
+  client_id=0oa3lt26eoMkPCWl65d7&
+  state=pls&
+  redirect_uri=https://example-app.com/redirect&
+  code_challenge=b2j90XeblLEAMW6soaM8jSRK7gDxOsmCOmLf8nOdDBU&
+  code_challenge_method=S256
+
+
+Get Access Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=authorization_code \
+-d redirect_uri=https://example-app.com/redirect \
+-d client_id=0oa3lt26eoMkPCWl65d7 \
+-d client_secret=ecJboMEYus5ou6bztSHrEgZLYt_3gWVHV-v0i6PT \
+-d code_verifier=fed049d1cd89c6c35e22d2aed7836acc53301fa005241ced6782fe61 \
+-d code=4I_zC8-LDVYsZvwhGEB9MWIGsene2O4PqlFt7EoMVTA
+
+
+Refresh Token
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+response_type=code&
+scope=offline_access+photos&
+client_id=0oa3o7nulpW4sdKMs5d7&
+state=pls&
+redirect_uri=https://example-app.com/redirect&
+code_challenge=b2j90XeblLEAMW6soaM8jSRK7gDxOsmCOmLf8nOdDBU&
+code_challenge_method=S256
+
+
+Get Access & Refresh Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=authorization_code \
+-d redirect_uri=https://example-app.com/redirect \
+-d client_id=0oa3o7nulpW4sdKMs5d7 \
+-d code_verifier=fed049d1cd89c6c35e22d2aed7836acc53301fa005241ced6782fe61 \
+-d code=KMWILLxQ363TdCq3rEVig6G_aBb2pSDnrBDVnPTvqjY
+
+
+Use Refresh Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=refresh_token \
+-d client_id=0oa3o7nulpW4sdKMs5d7 \
+-d refresh_token=TX5KSpMP7sX9TcfRH7zJZzbJV3Sho2eVQMP_SSAf0gY
+
+
+Singele Page App
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+response_type=code&
+scope=photos&
+client_id=0oa3ogg1liNdKEOYa5d7&
+state=hello&
+redirect_uri=https://example-app.com/redirect&
+code_challenge=bOnqDkAv4QURfc79xn6eQyowouSEWhDgxuHXtsNPNsQ&
+code_challenge_method=S256
+
+Use Access Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=authorization_code \
+-d redirect_uri=https://example-app.com/redirect \
+-d client_id=0oa3ogg1liNdKEOYa5d7 \
+-d code_verifier=9f62419e1059813f8fbb3dd8107bce25ad237d03249f90ab48706d12 \
+-d code=m3E55vclYffOhe0XtfkMk4Zf1xQhrk-AY0COpgI4vrU
+
+
+Get Acces Token API Service
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=client_credentials \
+-d client_id=0oa3oni67xMtNFKFt5d7 \
+-d client_secret=kyd9_7GV0UvfxkYDbYW6OtJz-_4O2rg8tmRlcI7p \
+-d scope=photos
+
+
+OpenId
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+  response_type=code&
+  scope=openid+profile+email&
+  client_id=0oa3lt26eoMkPCWl65d7&
+  state=hello2&
+  redirect_uri=https://example-app.com/redirect&
+  code_challenge=v8tTd8JDmObOQ39_ag9sXBxH3ghQX6qyH3qkDHf2Xdo&
+  code_challenge_method=S256
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+  -d grant_type=authorization_code \
+  -d redirect_uri=https://example-app.com/redirect \
+  -d client_id=0oa3lt26eoMkPCWl65d7 \
+  -d client_secret=ecJboMEYus5ou6bztSHrEgZLYt_3gWVHV-v0i6PT \
+  -d code_verifier=118344b016a6224ae27876d5bbb3246559e860559c4c27bd93bce3f4 \
+  -d code=yiDn6UwBsfh2Bu9alpBnoYIRFnrd4HYNx-2Gqre8Pno
+
+https://dev-71031260.okta.com/oauth2/default/v1/introspect
+
+curl https://dev-71031260.okta.com/oauth2/default/v1/introspect \
+  -d client_id=0oa3owoozuMDE1E3R5d7 \
+  -d client_secret=tL10G2_U43ap6a-GHVoG9_Y9Ig8b8NYhokw7ESD0 \
+  -d token=i84XoeK5Whb_C8kL2_BY1-pNaKIJ0Ca3sdlgA5pM1EY
+
+
+
+
+
