@@ -1,0 +1,3 @@
+Redirect /Benutzerverwaltung/index.php /Benutzerverwaltung/login.php
+
+ErrorDocument 404 /Benutzerverwaltung/error_pages/404.html

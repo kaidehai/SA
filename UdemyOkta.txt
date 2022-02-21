@@ -1,0 +1,147 @@
+https://dev-71031260.okta.com/oauth2/default
+
+MetaData
+https://dev-71031260.okta.com/oauth2/default/.well-known/oauth-authorization-server
+
+Authorization Token Request
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+  response_type=code&
+  scope=photos&
+  client_id=0oa3lt26eoMkPCWl65d7&
+  state=pls&
+  redirect_uri=https://example-app.com/redirect&
+  code_challenge=b2j90XeblLEAMW6soaM8jSRK7gDxOsmCOmLf8nOdDBU&
+  code_challenge_method=S256
+
+
+Get Access Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=authorization_code \
+-d redirect_uri=https://example-app.com/redirect \
+-d client_id=0oa3lt26eoMkPCWl65d7 \
+-d client_secret=ecJboMEYus5ou6bztSHrEgZLYt_3gWVHV-v0i6PT \
+-d code_verifier=fed049d1cd89c6c35e22d2aed7836acc53301fa005241ced6782fe61 \
+-d code=4I_zC8-LDVYsZvwhGEB9MWIGsene2O4PqlFt7EoMVTA
+
+
+Refresh Token
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+response_type=code&
+scope=offline_access+photos&
+client_id=0oa3o7nulpW4sdKMs5d7&
+state=pls&
+redirect_uri=https://example-app.com/redirect&
+code_challenge=b2j90XeblLEAMW6soaM8jSRK7gDxOsmCOmLf8nOdDBU&
+code_challenge_method=S256
+
+
+Get Access & Refresh Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=authorization_code \
+-d redirect_uri=https://example-app.com/redirect \
+-d client_id=0oa3o7nulpW4sdKMs5d7 \
+-d code_verifier=fed049d1cd89c6c35e22d2aed7836acc53301fa005241ced6782fe61 \
+-d code=KMWILLxQ363TdCq3rEVig6G_aBb2pSDnrBDVnPTvqjY
+
+
+Use Refresh Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=refresh_token \
+-d client_id=0oa3o7nulpW4sdKMs5d7 \
+-d refresh_token=TX5KSpMP7sX9TcfRH7zJZzbJV3Sho2eVQMP_SSAf0gY
+
+
+Singele Page App
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+response_type=code&
+scope=photos&
+client_id=0oa3ogg1liNdKEOYa5d7&
+state=hello&
+redirect_uri=https://example-app.com/redirect&
+code_challenge=bOnqDkAv4QURfc79xn6eQyowouSEWhDgxuHXtsNPNsQ&
+code_challenge_method=S256
+
+Use Authorization Token
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=authorization_code \
+-d redirect_uri=https://example-app.com/redirect \
+-d client_id=0oa3ogg1liNdKEOYa5d7 \
+-d code_verifier=9f62419e1059813f8fbb3dd8107bce25ad237d03249f90ab48706d12 \
+-d code=K1-0Ibur2xtbGljFUrVM935pTGCFqm4JaMFK7qTJroo
+
+
+Get Authorization Token API Service
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=client_credentials \
+-d client_id=0oa3oni67xMtNFKFt5d7 \
+-d client_secret=kyd9_7GV0UvfxkYDbYW6OtJz-_4O2rg8tmRlcI7p \
+-d scope=photos
+
+
+OpenId
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+  response_type=code&
+  scope=openid+profile+email&
+  client_id=0oa3lt26eoMkPCWl65d7&
+  state=hello2&
+  redirect_uri=https://example-app.com/redirect&
+  code_challenge=v8tTd8JDmObOQ39_ag9sXBxH3ghQX6qyH3qkDHf2Xdo&
+  code_challenge_method=S256
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+  -d grant_type=authorization_code \
+  -d redirect_uri=https://example-app.com/redirect \
+  -d client_id=0oa3lt26eoMkPCWl65d7 \
+  -d client_secret=ecJboMEYus5ou6bztSHrEgZLYt_3gWVHV-v0i6PT \
+  -d code_verifier=118344b016a6224ae27876d5bbb3246559e860559c4c27bd93bce3f4 \
+  -d code=yiDn6UwBsfh2Bu9alpBnoYIRFnrd4HYNx-2Gqre8Pno
+
+curl https://dev-71031260.okta.com/oauth2/default/v1/introspect \
+-d client_id=0oa3owoozuMDE1E3R5d7 \
+-d client_secret=tL10G2_U43ap6a-GHVoG9_Y9Ig8b8NYhokw7ESD0 \
+-d token=eyJraWQiOiJiUnp0aXNJM2pnZTVaTlRScmtGdm0zUFpWSVVZUUdQWlBvNi1KUUxBWlg0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULlM2NkRVa1JHNF81Mk1iRFVrd1cwT2M0c3pDOG5QMkxlVEhSYU4zemJ1aFUiLCJpc3MiOiJodHRwczovL2Rldi03MTAzMTI2MC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NDMyMDg1NjEsImV4cCI6MTY0MzIxMjE2MSwiY2lkIjoiMG9hM29nZzFsaU5kS0VPWWE1ZDciLCJ1aWQiOiIwMHUyeXc0cjV6VUl2U3ZoQjVkNyIsInNjcCI6WyJwaG90b3MiXSwic3ViIjoiY2hyaXN0aWFuLmtvZWhsZXJAc3R1ZC5rZnRnLmNoIn0.KVazkm2wv08PmPVbVjvUkP6f6B44tPNT781W4FRQ-cbJ7D1-KWAA-YhBlzJjnMxUs4Dm8yeaMUj_asL3Ek6yNPKq3nwKwCB-p3n9uLqr4axmC3xSgq0BIYWjblpP5BQJIEXWyhCX5xb36FnEVSUm8ri0__IzKAw8AzG4srGG_xeQ_u5cqaKakDWvzAkUMigS6Dh8X-uMPR63aNIOGrxeGa-F5xMQ4jzh_Gq57YdjZaKtnDtIMnP1IszW9pHGkgtZBtkSkQEKkUiYip-PK3IeM5uRiOXdrKkULHPSblOKszsjCYTwxxoC2Pz6wglcBkzompdtdA4f9tCd9DOdbERY2A
+
+Revoke Access Token
+
+curl https://dev-71031260.okta.com/oauth2/default/v1/revoke \
+-d client_id=0oa3owoozuMDE1E3R5d7 \
+-d client_secret=tL10G2_U43ap6a-GHVoG9_Y9Ig8b8NYhokw7ESD0 \
+-d token=eyJraWQiOiJiUnp0aXNJM2pnZTVaTlRScmtGdm0zUFpWSVVZUUdQWlBvNi1KUUxBWlg0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULlM2NkRVa1JHNF81Mk1iRFVrd1cwT2M0c3pDOG5QMkxlVEhSYU4zemJ1aFUiLCJpc3MiOiJodHRwczovL2Rldi03MTAzMTI2MC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NDMyMDg1NjEsImV4cCI6MTY0MzIxMjE2MSwiY2lkIjoiMG9hM29nZzFsaU5kS0VPWWE1ZDciLCJ1aWQiOiIwMHUyeXc0cjV6VUl2U3ZoQjVkNyIsInNjcCI6WyJwaG90b3MiXSwic3ViIjoiY2hyaXN0aWFuLmtvZWhsZXJAc3R1ZC5rZnRnLmNoIn0.KVazkm2wv08PmPVbVjvUkP6f6B44tPNT781W4FRQ-cbJ7D1-KWAA-YhBlzJjnMxUs4Dm8yeaMUj_asL3Ek6yNPKq3nwKwCB-p3n9uLqr4axmC3xSgq0BIYWjblpP5BQJIEXWyhCX5xb36FnEVSUm8ri0__IzKAw8AzG4srGG_xeQ_u5cqaKakDWvzAkUMigS6Dh8X-uMPR63aNIOGrxeGa-F5xMQ4jzh_Gq57YdjZaKtnDtIMnP1IszW9pHGkgtZBtkSkQEKkUiYip-PK3IeM5uRiOXdrKkULHPSblOKszsjCYTwxxoC2Pz6wglcBkzompdtdA4f9tCd9DOdbERY2A
+
+Custom Scope Request
+
+https://dev-71031260.okta.com/oauth2/default/v1/authorize?
+response_type=code&
+scope=photos+photos:create+photos:delete&
+client_id=0oa3ogg1liNdKEOYa5d7&
+state=customScopes&
+redirect_uri=https://example-app.com/redirect&
+code_challenge=v8tTd8JDmObOQ39_ag9sXBxH3ghQX6qyH3qkDHf2Xdo&
+code_challenge_method=S256
+
+Get Access Token for Scopes
+
+curl -X POST https://dev-71031260.okta.com/oauth2/default/v1/token \
+-d grant_type=authorization_code \
+-d redirect_uri=https://example-app.com/redirect \
+-d client_id=0oa3ogg1liNdKEOYa5d7 \
+-d code_verifier=118344b016a6224ae27876d5bbb3246559e860559c4c27bd93bce3f4 \
+-d code=5-jsOY6PscCMZkgjKeEPRNyG22jJ41it3u6IxlqD7jM
+
+curl https://dev-71031260.okta.com/oauth2/default/v1/introspect \
+-d client_id=0oa3owoozuMDE1E3R5d7 \
+-d client_secret=tL10G2_U43ap6a-GHVoG9_Y9Ig8b8NYhokw7ESD0 \
+-d token=eyJraWQiOiJiUnp0aXNJM2pnZTVaTlRScmtGdm0zUFpWSVVZUUdQWlBvNi1KUUxBWlg0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULm1ZcklFeVpMZ0hjMzRZOEZZRHVGQVVpTGtMcE1UMVZwNU1nWDV3UlEyX2MiLCJpc3MiOiJodHRwczovL2Rldi03MTAzMTI2MC5va3RhLmNvbS9vYXV0aDIvZGVmYXVsdCIsImF1ZCI6ImFwaTovL2RlZmF1bHQiLCJpYXQiOjE2NDMyNzcyMTQsImV4cCI6MTY0MzI4MDgxNCwiY2lkIjoiMG9hM29nZzFsaU5kS0VPWWE1ZDciLCJ1aWQiOiIwMHUyeXc0cjV6VUl2U3ZoQjVkNyIsInNjcCI6WyJwaG90b3MiLCJwaG90b3M6Y3JlYXRlIiwicGhvdG9zOmRlbGV0ZSJdLCJzdWIiOiJjaHJpc3RpYW4ua29laGxlckBzdHVkLmtmdGcuY2gifQ.aeTzI981rfwP1DUNloYqjQjZeuDKVh-fNacY3v66MT3RD5ZlhbNeCFEWzIrHUXtL3qhC5v9SoSsfF5b7PUdz8ar4FiJvVMfq69Z2fXX5iey9DT9Lt0xjb4lGbg7dSCu-lL54voRGExfCUfMdbxXTcyt4TRaMNrvGeZdKv1g80K9qckxemPcdz-MYgwmXZM_GxugOpGH7irylJ1AbyjHS5QP0xndM6SVFLxQDzjxedEuK_A-Lu5kJJgrRZWsJU-lpeEc3Ij84JfBKSa1S5WA4DHoW1ZwnZg6zF0vYb9OPZZiWXId18kVYLL_TcfJV1ddP6fTueqWSFauFsS4v_LEeDA
+
+
+
+
